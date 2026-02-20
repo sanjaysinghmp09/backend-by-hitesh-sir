@@ -1,9 +1,9 @@
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
-(()=> {
-    try {
-        mongoose.connect(`${process.env.}`)
-    } catch (error) {
-        console.error("ERROR:" , error)
-    }
-})()
+// (()=> {
+//     try {
+//         mongoose.connect(`${process}`)
+//     } catch (error) {
+//         console.error("ERROR:" , error)
+//     }
+// })()
