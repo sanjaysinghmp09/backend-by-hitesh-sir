@@ -58,4 +58,8 @@ userSchema.pre("save" , async function (next) {
   this.password = bcrypy.hash(this.password , 10)
   next()
 })
+
+userSchema.methods.isPasswordCorrect = async function (password) {
+ await bcrypy.compare(password, this.password)
+}
 export const User = mongoose.model("User", userSchema);
