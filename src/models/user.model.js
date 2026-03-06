@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
+import jwt from "jsonwebtoken"
+import bcrypy from "bcrypt"
 import { use } from "react";
-
 const userSchema = new Schema({
   username: {
     type: String,
@@ -49,4 +50,12 @@ const userSchema = new Schema({
     timestamps: true ,
 }
 );
+
+userSchema.pre("save" , async function (next) {
+  if (!this.isModified("password")) return next();
+
+  
+  this.password = bcrypy.hash(this.password , 10)
+  next()
+})
 export const User = mongoose.model("User", userSchema);
