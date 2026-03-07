@@ -62,4 +62,8 @@ userSchema.pre("save" , async function (next) {
 userSchema.methods.isPasswordCorrect = async function (password) {
  await bcrypy.compare(password, this.password)
 }
+
+userSchema.methods.gererateAccessToken = function (){}
+userSchema.methods.gererateRefreshToken = function (){}
+
 export const User = mongoose.model("User", userSchema);
