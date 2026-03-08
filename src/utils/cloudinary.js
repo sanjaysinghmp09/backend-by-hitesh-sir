@@ -10,8 +10,20 @@ cloudinary.config ( {
 
 const uploadOnCloudinary = async (localFilePath) => {
     try {
-        
+        if (!localFilePath) return null 
+        // upload the file on cloudinary
+       const response = await  cloudinary.uploader.upload(localFilePath , {
+            resource_type : "auto"
+        })
+        // file has been uploaded successfull
+        console.log("file is uploaded on clodinary" , response.url)
+        return response
     } catch (error) {
-        
+        fs.unlinkSync(localFilePath) // remove the locally saved tem file as the upload operatino got failed
+
+        return null ;
+
     }
 }
+
+export {uploadOnCloudinary}
