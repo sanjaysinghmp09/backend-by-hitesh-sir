@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import jwt from "jsonwebtoken";
-import bcrypy from "bcrypt";
-import { use } from "react";
+import bcrypt from "bcrypt";
+
 const userSchema = new Schema(
   {
     username: {
@@ -54,19 +54,19 @@ const userSchema = new Schema(
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
-  this.password = bcrypy.hash(this.password, 10);
-  next();
+  this.password = await bcrypy.hash(this.password, 10);
+ return  next();
 });
 
 userSchema.methods.isPasswordCorrect = async function (password) {
-  await bcrypy.compare(password, this.password);
+  await bcrypt.compare(password, this.password);
 };
 
 userSchema.methods.gererateAccessToken = function () {
   return jwt.sign(
     {
     _id: this.id,
-    email: this.id,
+    email: this.email,
     username: this.username,
     fullname: this.fullname,
   } ,

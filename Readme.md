@@ -172,3 +172,8 @@ To learn more about aggregation pipelines, see:
 - [Expressions](https://mongodbcom-cdn.staging.corp.mongodb.com/docs/reference/mql/expressions/#std-label-aggregation-expression-operators)
 
 - [Aggregation Stages](https://mongodbcom-cdn.staging.corp.mongodb.com/docs/reference/mql/aggregation-stages/#std-label-aggregation-pipeline-operator-reference)
+
+# note - 1 
+agar cloudnary pr file upload krte he to usse pahle ham local me file rkhte he tai agar user ki file sahi se upload na hui ho to bo file ham return upload kr sakte coludnary pr yeh file ham local me temprary hi rkhte he 
+
+
