@@ -16,8 +16,8 @@ const registerUser = asyncHandler(async (req, res) => {
   // check for user creation
   // return response
 
-  const { fullname, username, email, password } = req.body;
-  console.log("email: ", email);
+  const { fullname , username, email, password } = req.body;
+  console.log("email: ", email , fullname);
 
   //    two ways for VALIDATE USER empty fields
 
@@ -75,7 +75,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
    })
 
-   const createdUser =  await User.findById(username._id).select(
+   const createdUser =  await User.findById(user._id).select(
     "-password -refreshToken"
    )
 

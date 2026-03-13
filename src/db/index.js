@@ -6,7 +6,7 @@ console.log("ENV CHECK:", process.env.MONGODB_URI);
 const connectDB = async() => {
     try {
         
-        const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
+        const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URI}`)
         console.log(`MONGODB CONNECTED !! DB HOST ${connectionInstance.connection.host}` );
         // console.log(connectionInstance)
         
