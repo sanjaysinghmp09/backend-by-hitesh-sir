@@ -16,13 +16,13 @@ const registerUser = asyncHandler(async (req, res) => {
   // check for user creation
   // return response
 
-  const { fullname , username, email, password } = req.body;
-  console.log("email: ", email , fullname);
+  const { fullName , username, email, password } = req.body;
+  console.log("email: ", email , fullName);
 
   //    two ways for VALIDATE USER empty fields
 
-  /* if (fullname == "") {
-    throw new ApiError(400 , "fullname are required")
+  /* if (fullName == "") {
+    throw new ApiError(400 , "fullName are required")
    }
    if (username == "") {
     throw new ApiError(400 , "username are required")
@@ -36,7 +36,7 @@ const registerUser = asyncHandler(async (req, res) => {
     */
 
   if (
-    [fullname, username, email, password].some((field) => field?.trim() === "")
+    [fullName, username, email, password].some((field) => field?.trim() === "")
   ) {
     throw new ApiError(400, "All field are reqired!");
   }
@@ -50,7 +50,12 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
    const avatarLocalPath = req.files?.avatar[0]?.path ;
-   const coverImageLocalPath = req.files?.coverImage[0]?.path;
+  //  const coverImageLocalPath = req.files?.coverImage[0]?.path;
+
+  let coverImageLocalPath ; 
+  if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
+    coverImageLocalPath = req.files.coverImage[0].path
+  }
     
    if (!avatarLocalPath) {
     throw new ApiError(400 , "avatar file is required file path error")
@@ -64,8 +69,8 @@ const registerUser = asyncHandler(async (req, res) => {
    }
 
    const user = await User.create({
-    fullname ,
-    avatar : avatar.url ,
+    fullName ,
+    avatar : avatar?.url ,
     coverImage : coverImage?.url || "",
     email ,
     password ,

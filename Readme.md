@@ -178,3 +178,9 @@ agar cloudnary pr file upload krte he to usse pahle ham local me file rkhte he t
 
 
 multer 
+
+
+edit- user.controller - 62 line ! remove from avatar
+edit user.controller 68 add ?  mark optinal condition
+
+edit user model - avatar not true false
